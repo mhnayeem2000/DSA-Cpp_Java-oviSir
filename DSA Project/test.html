@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sorting Visualization</title>
+  <style>
+    /* Add CSS styles here */
+   /* Add CSS styles here */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+select {
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+  </style>
+</head>
+<body>
+  <h1>Sorting Visualization</h1>
+  <div>
+    <select id="algorithm-select">
+      <option value="bubble-sort">Bubble Sort</option>
+      <option value="merge-sort">Merge Sort</option>
+      <option value="quick-sort">Quick Sort</option>
+    </select>
+  </div>
+  
+  <script>
+    // Add JavaScript code here
+    const algorithmSelect = document.getElementById('algorithm-select');
+    algorithmSelect.addEventListener('change', () => {
+      const selectedAlgorithm = algorithmSelect.value;
+      console.log('Selected algorithm:', selectedAlgorithm);
+    });
+  </script>
+</body>
+</html>
