@@ -28,7 +28,7 @@ function animate(swaps){
     bar2.style.height = height1;
     setTimeout(function() {
         animate(swaps);
-    }, 100);
+    }, 200);
 }
 
 
