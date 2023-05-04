@@ -1,6 +1,6 @@
 const n =10;
 const arr = [];
-
+init();
 showBars();
 function init(){
     for(let i = 0; i < n; i++){
@@ -31,6 +31,7 @@ function bubbleSort(arr){
 
 
 function showBars(){
+    container.innerHTML ="";
     for(let i = 0; i < arr.length; i++){
         const bar = document.createElement('div');
         bar.style.height =arr[i]*100+"%";
