@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="shortcut icon" href="nav_Icone.webp">
   <title>Sorting Visualization</title>
   <style>
     /* Add CSS styles here */
@@ -52,7 +53,9 @@ body {
     align-items: center;
     flex-direction: column;
 }
-
+.bar.swap {
+  background-color: red;
+}
 #container {
     height: 200px;
     display: flex;
@@ -71,14 +74,14 @@ body {
   <h1>Sorting Visualization</h1>
   <div>
    <button>Marge Sort</button>
-   <button>Bobble Sort</button>
+   <button onClick="play()" >Bobble Sort</button>
    <button>Quick Sort</button>
   </div>
   <div id="container"></div>
 
     <hr>
     <div>
-        <button onClick="init()">Init</button>
+        <button onClick="init()">Generate New Bars</button>
         <button onClick="play()">Play</button>
     </div>
 
@@ -102,26 +105,32 @@ body {
     }
 
     function play(){
-      const swaps= bubbleSort(arr);
+      const copy = [...arr];
+      const swaps= bubbleSort(copy);
       animate(swaps);
     }
 
 
-    function animate(swaps){
-        if(swaps.length == 0){
-            return;
-        }
-        const [i,j] = swaps.shift();
-        const bar1 = document.querySelectorAll('.bar')[i];
-        const bar2 = document.querySelectorAll('.bar')[j];
-        const height1 = bar1.style.height;
-        const height2 = bar2.style.height;
-        bar1.style.height = height2;
-        bar2.style.height = height1;
-        setTimeout(function() {
-            animate(swaps);
-        }, 150);
-    }
+    function animate(swaps) {
+      if (swaps.length == 0) {
+        return;
+      }
+      const [i, j] = swaps.shift();
+      const bar1 = document.querySelectorAll('.bar')[i];
+      const bar2 = document.querySelectorAll('.bar')[j];
+      bar1.classList.add('swap');
+      bar2.classList.add('swap');
+      const height1 = bar1.style.height;
+      const height2 = bar2.style.height;
+      bar1.style.height = height2;
+      bar2.style.height = height1;
+      setTimeout(function() {
+        bar1.classList.remove('swap');
+        bar2.classList.remove('swap');
+        animate(swaps);
+      }, 150);
+}
+
 
 
 
