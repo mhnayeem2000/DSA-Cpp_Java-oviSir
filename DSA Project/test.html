@@ -63,7 +63,7 @@ body {
     
 }
 .bar{
-    width: 10px;
+    width: 20px;
     background-color: black;
     margin: 1px;
 }
@@ -75,7 +75,8 @@ body {
   <div>
    <button>Marge Sort</button>
    <button onClick="play()" >Bobble Sort</button>
-   <button>Quick Sort</button>
+   <button onClick="quickSortAnimation()">Quick Sort</button>
+
   </div>
   <div id="container"></div>
 
@@ -93,7 +94,7 @@ body {
     //from main html code 
 
 
-    const n =30;
+    const n =20;
     const arr = [];
     init();
     showBars();
@@ -131,7 +132,66 @@ body {
       }, 150);
 }
 
+//quick sort start 
+function quickSort(arr, start = 0, end = arr.length - 1) {
+  if (start >= end) {
+    return;
+  }
+  const pivotIndex = partition(arr, start, end);
+  quickSort(arr, start, pivotIndex - 1);
+  quickSort(arr, pivotIndex + 1, end);
+}
 
+function partition(arr, start, end) {
+  const pivotValue = arr[end];
+  let pivotIndex = start;
+  for (let i = start; i < end; i++) {
+    if (arr[i] < pivotValue) {
+      swap(arr, i, pivotIndex);
+      pivotIndex++;
+    }
+  }
+  swap(arr, pivotIndex, end);
+  return pivotIndex;
+}
+
+function swap(arr, i, j) {
+  const temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+
+function quickSortAnimation() {
+  const copy = [...arr];
+  const swaps = [];
+  quickSort(copy);
+
+  for (let i = 0; i < copy.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (copy[i] === arr[j]) {
+        swaps.push([j, i]);
+        break;
+      }
+    }
+  }
+
+  animate(swaps);
+}
+
+
+
+
+
+//quick sort end
+
+
+
+//quick sort animation start
+
+
+
+
+//quick sort animation end
 
 
     function bubbleSort(arr){  
