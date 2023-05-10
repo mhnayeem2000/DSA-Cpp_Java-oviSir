@@ -18,14 +18,19 @@ body {
 
 h1 {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 20px ;
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
+.conteiner {
+  width: 550px;
+  height: 500px;
+  background-color: rgb(220, 218, 217);
+  padding: 50px;
+  top: 10%;
+  position: absolute;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 button {
@@ -71,22 +76,25 @@ body {
   </style>
 </head>
 <body>
+ 
+
+<div class="conteiner">
   <h1>Sorting Visualization</h1>
-  <div>
-   <button>Marge Sort</button>
-   <button onClick="play()" >Bobble Sort</button>
-   <button onClick="quickSortAnimation()">Quick Sort</button>
-
-  </div>
-  <div id="container"></div>
-
+    <div>
+      <button>Marge Sort</button>
+      <button>Selection Sort</button>
+      <button onClick="play()" >Bobble Sort</button>
+      <button onClick="quickSortt()">Quick Sort</button>
+  
+    </div>
+    <div id="container"></div>
+  
     <hr>
     <div>
         <button onClick="init()">Generate New Bars</button>
         <button onClick="play()">Play</button>
     </div>
-
-
+</div>
 
   <script>
     
@@ -94,7 +102,7 @@ body {
     //from main html code 
 
 
-    const n =20;
+    const n =25;
     const arr = [];
     init();
     showBars();
@@ -132,7 +140,7 @@ body {
       }, 150);
 }
 
-//quick sort start 
+function quickSortt(){
 function quickSort(arr, start = 0, end = arr.length - 1) {
   if (start >= end) {
     return;
@@ -160,24 +168,7 @@ function swap(arr, i, j) {
   arr[i] = arr[j];
   arr[j] = temp;
 }
-
-function quickSortAnimation() {
-  const copy = [...arr];
-  const swaps = [];
-  quickSort(copy);
-
-  for (let i = 0; i < copy.length; i++) {
-    for (let j = 0; j < arr.length; j++) {
-      if (copy[i] === arr[j]) {
-        swaps.push([j, i]);
-        break;
-      }
-    }
-  }
-
-  animate(swaps);
 }
-
 
 
 
